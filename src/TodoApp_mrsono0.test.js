@@ -21,4 +21,11 @@ describe('<TodoApp_mrsono0 />', () => {
         fireEvent.click(getByText('등록'));
         getByText('새 항목 추가하기');
     });
+    it('toggles todo', () => {
+        const { getByText } = render(<TodoApp_mrsono0 />);
+        const todoText = getByText('TDD 배우기');
+        expect(todoText).not.toHaveStyle('text-decoration: line-through');
+        fireEvent.click(todoText);
+        expect(todoText).toHaveStyle('text-decoration: line-through');
+    });
 });
